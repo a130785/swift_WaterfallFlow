@@ -1,25 +1,90 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
-                        <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
-                    </view>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="swift_WaterfallFlow" customModuleProvider="target" sceneMemberID="viewController">
+                    <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="znV-4o-Z9T">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Hbg-Bv-Wog" customClass="WWCollectionFlowLayout" customModule="swift_WaterfallFlow" customModuleProvider="target">
+                            <size key="itemSize" width="153" height="204"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                            <size key="footerReferenceSize" width="50" height="50"/>
+                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                        </collectionViewFlowLayout>
+                        <cells>
+                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="GoodCellCache" id="YZw-eT-ben" customClass="WWGoodCell" customModule="swift_WaterfallFlow" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="0.0" width="153" height="204"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                    <rect key="frame" x="0.0" y="0.0" width="153" height="204"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="28Z-pm-U7o">
+                                            <rect key="frame" x="-2" y="-2" width="157" height="208"/>
+                                        </imageView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2iG-gj-qF6">
+                                            <rect key="frame" x="-2" y="185.5" width="157" height="20.5"/>
+                                            <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.59999999999999998" colorSpace="calibratedRGB"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                </view>
+                                <constraints>
+                                    <constraint firstAttribute="topMargin" secondItem="28Z-pm-U7o" secondAttribute="top" constant="10" id="8RH-xz-EUV"/>
+                                    <constraint firstItem="2iG-gj-qF6" firstAttribute="leading" secondItem="YZw-eT-ben" secondAttribute="leadingMargin" constant="-10" id="FTo-7F-lft"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="2iG-gj-qF6" secondAttribute="bottom" constant="-10" id="Zx5-kz-Xtd"/>
+                                    <constraint firstAttribute="bottomMargin" secondItem="28Z-pm-U7o" secondAttribute="bottom" constant="-10" id="dcD-eL-RJp"/>
+                                    <constraint firstItem="28Z-pm-U7o" firstAttribute="leading" secondItem="YZw-eT-ben" secondAttribute="leadingMargin" constant="-10" id="iXv-cq-LZ9"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="2iG-gj-qF6" secondAttribute="trailing" constant="-10" id="s4S-Tq-x3R"/>
+                                    <constraint firstAttribute="trailingMargin" secondItem="28Z-pm-U7o" secondAttribute="trailing" constant="-10" id="tsd-7U-gMt"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="imageview" destination="28Z-pm-U7o" id="HnF-cC-Iex"/>
+                                    <outlet property="priceView" destination="2iG-gj-qF6" id="apy-OI-gkF"/>
+                                </connections>
+                            </collectionViewCell>
+                        </cells>
+                        <collectionReusableView key="sectionFooterView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="FooterViewCache" id="pey-kP-7dO" customClass="WWCollectionFooterView" customModule="swift_WaterfallFlow" customModuleProvider="target">
+                            <rect key="frame" x="0.0" y="204" width="320" height="50"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="UTa-cC-UQg">
+                                    <rect key="frame" x="142" y="6" width="37" height="37"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" red="1" green="0.59355086180790273" blue="0.21516905454264446" alpha="1" colorSpace="calibratedRGB"/>
+                            <constraints>
+                                <constraint firstItem="UTa-cC-UQg" firstAttribute="centerY" secondItem="pey-kP-7dO" secondAttribute="centerY" id="FQO-7H-xFV"/>
+                                <constraint firstItem="UTa-cC-UQg" firstAttribute="centerX" secondItem="pey-kP-7dO" secondAttribute="centerX" id="TGT-fh-UXH"/>
+                            </constraints>
+                            <connections>
+                                <outlet property="indicator" destination="UTa-cC-UQg" id="bhk-GD-Fdg"/>
+                            </connections>
+                        </collectionReusableView>
+                        <connections>
+                            <outlet property="dataSource" destination="BYZ-38-t0r" id="iWx-cj-0zo"/>
+                            <outlet property="delegate" destination="BYZ-38-t0r" id="avx-Es-BPN"/>
+                        </connections>
+                    </collectionView>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="flowLayout" destination="Hbg-Bv-Wog" id="ior-4K-7LC"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="173" y="313"/>
         </scene>
     </scenes>
 </document>
