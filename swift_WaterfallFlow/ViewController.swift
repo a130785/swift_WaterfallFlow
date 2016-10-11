@@ -23,13 +23,13 @@ class ViewController: UICollectionViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.collectionView?.backgroundColor = UIColor.whiteColor()
+        self.collectionView?.backgroundColor = UIColor.white
         self.loadData()
     }
     
     func loadData() {
         let goods = WWGood.goodsWithIndex(self.index)
-        self.goodsList.appendContentsOf(goods as! [WWGood])
+        self.goodsList.append(contentsOf: goods as! [WWGood])
         self.index += 1
         // 设置布局的属性
         self.flowLayout.columnCount = 3
@@ -38,28 +38,28 @@ class ViewController: UICollectionViewController {
     }
     
 //MARK:- UICollectionViewDataSource
-    override func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return self.goodsList.count
     }
 
-    override func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("GoodCellCache", forIndexPath: indexPath) as! WWGoodCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "GoodCellCache", for: indexPath) as! WWGoodCell
 
-        cell.setGoodData(self.goodsList[indexPath.item])
+        cell.setGoodData(self.goodsList[(indexPath as NSIndexPath).item])
         return cell;
     }
     
 //MARK:-FooterView
-    override func collectionView(collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, atIndexPath indexPath: NSIndexPath) -> UICollectionReusableView {
+    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == UICollectionElementKindSectionFooter {
-            self.footerView = collectionView.dequeueReusableSupplementaryViewOfKind(kind, withReuseIdentifier: "FooterViewCache", forIndexPath: indexPath) as? WWCollectionFooterView
+            self.footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FooterViewCache", for: indexPath) as? WWCollectionFooterView
         }
         return self.footerView!
     }
 
 //MARK:-scrollView代理方法
-    override func scrollViewDidScroll(scrollView: UIScrollView) {
+    override func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if self.footerView == nil || self.loading == true {
             return
         }
@@ -68,7 +68,7 @@ class ViewController: UICollectionViewController {
             NSLog("开始刷新"); 
             self.loading = true
             self.footerView?.indicator.startAnimating()
-            dispatch_after(dispatch_time(DISPATCH_TIME_NOW, Int64(1 * NSEC_PER_SEC)), dispatch_get_main_queue(), {
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + Double(Int64(1 * NSEC_PER_SEC)) / Double(NSEC_PER_SEC), execute: {
                 self.footerView = nil
                 self.loadData()
                 self.loading = false
@@ -77,7 +77,7 @@ class ViewController: UICollectionViewController {
         
     }
     
-    override func prefersStatusBarHidden() -> Bool {
+    override var prefersStatusBarHidden : Bool {
         return true
     }
 }

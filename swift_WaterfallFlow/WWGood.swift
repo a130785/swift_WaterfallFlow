@@ -16,19 +16,19 @@ class WWGood: NSObject {
     var img:String?
     
     //字典转模型
-    static func goodWithDict(dic:NSDictionary ) -> WWGood {
+    static func goodWithDict(_ dic:NSDictionary ) -> WWGood {
         let good =  WWGood.init()
-        good.setValuesForKeysWithDictionary(dic as! [String : AnyObject])
+        good.setValuesForKeys(dic as! [String : AnyObject])
         return good
     }
     
     // 根据索引返回商品数组
-    static func goodsWithIndex(index:Int8) -> NSArray {
+    static func goodsWithIndex(_ index:Int8) -> NSArray {
         let fileName = "\(index % 3 + 1).plist"
-        let path = NSBundle.mainBundle().pathForResource(fileName, ofType: nil)
+        let path = Bundle.main.path(forResource: fileName, ofType: nil)
         let goodsAry = NSArray.init(contentsOfFile: path!)
         let goodsArray = goodsAry?.map{self.goodWithDict($0 as! NSDictionary)}
-        return goodsArray!
+        return goodsArray! as NSArray
     }
     
 }

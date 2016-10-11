@@ -15,10 +15,10 @@ class WWGoodCell: UICollectionViewCell {
 
     var good:WWGood?
     
-    func setGoodData(good:WWGood) {
+    func setGoodData(_ good:WWGood) {
         self.good = good
-        let url = NSURL.init(string: good.img!)
-        self.imageview.sd_setImageWithURL(url)
+        let url = URL.init(string: good.img!)
+        self.imageview.sd_setImage(with: url)
         self.priceView.text = good.price
     }
     
