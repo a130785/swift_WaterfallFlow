@@ -10,15 +10,16 @@ import Foundation
 
 class WWGood: NSObject {
 
-    var w:Int = 0
-    var h:Int = 0
-    var price:String?
-    var img:String?
+    @objc var w:Int = 0
+    @objc var img:String?
+    @objc var h:Int = 0
+    @objc var price:String?
+    
     
     //字典转模型
     static func goodWithDict(_ dic:NSDictionary ) -> WWGood {
         let good =  WWGood.init()
-        good.setValuesForKeys(dic as! [String : AnyObject])
+        good.setValuesForKeys(dic as! [String : Any])
         return good
     }
     
